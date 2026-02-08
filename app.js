@@ -9,8 +9,6 @@ const todayText = document.getElementById("todayText");
 
 const amountText = document.getElementById("amountText");
 const nameText = document.getElementById("nameText");
-const ageText = document.getElementById("ageText");
-const wageText = document.getElementById("wageText");
 const hoursText = document.getElementById("hoursText");
 const auraText = document.getElementById("auraText");
 const benefactorText = document.getElementById("benefactorText");
@@ -22,6 +20,12 @@ const badColorText = document.getElementById("badColorText");
 const ruleText = document.getElementById("ruleText");
 const missionText = document.getElementById("missionText");
 const noteText = document.getElementById("noteText");
+
+function setText(element, value) {
+  if (element) {
+    element.textContent = value;
+  }
+}
 
 const krw = new Intl.NumberFormat("ko-KR", {
   style: "currency",
@@ -313,18 +317,33 @@ function buildColor(seed, mood) {
 
 function getMoneyAura(score) {
   if (score >= 90) {
-    return "최상";
+    return {
+      band: "공격 구간",
+      action: "기회 포인트를 적극 탐색",
+    };
   }
   if (score >= 75) {
-    return "좋음";
+    return {
+      band: "상승 구간",
+      action: "소액 기회는 바로 실행",
+    };
   }
   if (score >= 60) {
-    return "무난";
+    return {
+      band: "균형 구간",
+      action: "충동지출만 차단",
+    };
   }
   if (score >= 40) {
-    return "주의";
+    return {
+      band: "방어 구간",
+      action: "지출 결정을 한 번 더 확인",
+    };
   }
-  return "절약 모드";
+  return {
+    band: "절약 구간",
+    action: "불필요 소비는 보류",
+  };
 }
 
 function applyMoodTheme(score) {
@@ -378,23 +397,21 @@ function buildFortune(name, dobValue, todayInfo) {
 }
 
 function setResultEmpty(message) {
-  amountText.textContent = message;
-  nameText.textContent = "—";
-  ageText.textContent = "—";
-  wageText.textContent = "—";
-  hoursText.textContent = "—";
-  auraText.textContent = "—";
-  benefactorText.textContent = "—";
-  cautionBenefactorText.textContent = "—";
-  luckyColorText.textContent = "—";
-  badColorText.textContent = "—";
+  setText(amountText, message);
+  setText(nameText, "—");
+  setText(hoursText, "—");
+  setText(auraText, "—");
+  setText(benefactorText, "—");
+  setText(cautionBenefactorText, "—");
+  setText(luckyColorText, "—");
+  setText(badColorText, "—");
   luckyColorChip.style.backgroundColor = "transparent";
   badColorChip.style.backgroundColor = "transparent";
   luckyColorChip.style.borderColor = "rgba(17, 24, 39, 0.15)";
   badColorChip.style.borderColor = "rgba(17, 24, 39, 0.15)";
-  ruleText.textContent = "—";
-  missionText.textContent = "—";
-  noteText.textContent = "—";
+  setText(ruleText, "—");
+  setText(missionText, "—");
+  setText(noteText, "—");
   applyMoodTheme();
 }
 
@@ -439,23 +456,21 @@ function compute() {
   const aura = getMoneyAura(fortune.luckyScore);
   applyMoodTheme(fortune.luckyScore);
 
-  amountText.textContent = krw.format(fortune.pickupAmount);
-  nameText.textContent = `${rawName} (${dobValue})`;
-  ageText.textContent = `#${fortune.inputKey}`;
-  wageText.textContent = krw.format(fortune.expectedValue);
-  hoursText.textContent = `${fortune.probabilityPercent.toFixed(2)}%`;
-  auraText.textContent = `${aura} (${fortune.luckyScore}점)`;
-  benefactorText.textContent = benefactor.initials;
-  cautionBenefactorText.textContent = cautionBenefactor.initials;
-  luckyColorText.textContent = `${luckyColor.name} ${luckyColor.hex}`;
-  badColorText.textContent = `${badColor.name} ${badColor.hex}`;
+  setText(amountText, krw.format(fortune.pickupAmount));
+  setText(nameText, `${rawName} (${dobValue})`);
+  setText(hoursText, `${fortune.probabilityPercent.toFixed(2)}%`);
+  setText(auraText, `${fortune.luckyScore}점 · ${aura.band} (${aura.action})`);
+  setText(benefactorText, benefactor.initials);
+  setText(cautionBenefactorText, cautionBenefactor.initials);
+  setText(luckyColorText, `${luckyColor.name} ${luckyColor.hex}`);
+  setText(badColorText, `${badColor.name} ${badColor.hex}`);
   luckyColorChip.style.backgroundColor = luckyColor.hex;
   badColorChip.style.backgroundColor = badColor.hex;
   luckyColorChip.style.borderColor = luckyColor.hex;
   badColorChip.style.borderColor = badColor.hex;
-  ruleText.textContent = `발견 확률 ${fortune.probabilityPercent.toFixed(2)}% × 예상 발견 금액 ${krw.format(fortune.pickupAmount)} = 기대값 ${krw.format(fortune.expectedValue)}`;
-  missionText.textContent = mission;
-  noteText.textContent = "오락용 결과입니다. 확률/금액/귀인/색상 해석은 재미 요소이며 실제 재무 판단 근거로 사용하지 마세요.";
+  setText(ruleText, `발견 확률 ${fortune.probabilityPercent.toFixed(2)}% × 예상 발견 금액 ${krw.format(fortune.pickupAmount)} = 기대값 ${krw.format(fortune.expectedValue)}`);
+  setText(missionText, mission);
+  setText(noteText, "오락용 결과입니다. 확률/금액/귀인/색상 해석은 재미 요소이며 실제 재무 판단 근거로 사용하지 마세요.");
 }
 
 function resetForm() {

@@ -3,7 +3,7 @@
 :root {
   --ink: #111827;
   --muted: #5b6472;
-  --surface: rgba(255, 255, 255, 0.88);
+  --surface: rgba(255, 255, 255, 0.9);
   --surface-strong: #ffffff;
   --line: rgba(17, 24, 39, 0.14);
   --shadow: 0 28px 70px rgba(8, 14, 24, 0.16);
@@ -40,7 +40,8 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
   background-size: 38px 38px;
   opacity: 0.4;
@@ -59,10 +60,14 @@ body.mood-negative {
   --accent-shadow: rgba(188, 43, 68, 0.28);
 }
 
+a {
+  color: inherit;
+}
+
 .shell {
   position: relative;
   z-index: 1;
-  max-width: 1040px;
+  max-width: 1080px;
   margin: 0 auto;
   display: grid;
   gap: 24px;
@@ -71,7 +76,41 @@ body.mood-negative {
 .hero {
   display: grid;
   gap: 12px;
-  padding: 10px 6px;
+  padding: 6px;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.brand {
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.88rem;
+  color: var(--muted);
+  padding: 5px 8px;
+  border-radius: 8px;
+}
+
+.nav-links a:hover {
+  background: rgba(17, 24, 39, 0.05);
+  color: var(--ink);
 }
 
 .badge {
@@ -104,6 +143,16 @@ h1 {
   font-size: 0.95rem;
 }
 
+.hero-note {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(17, 24, 39, 0.04);
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
 .panel {
   background: var(--surface);
   border-radius: 22px;
@@ -119,6 +168,31 @@ h1 {
   font-family: "Cormorant Garamond", serif;
   font-size: 1.65rem;
   letter-spacing: 0.02em;
+}
+
+.overview-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.overview-item {
+  background: var(--surface-strong);
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.overview-item h3 {
+  margin: 0 0 8px;
+  font-size: 0.98rem;
+}
+
+.overview-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 
 @keyframes rise {
@@ -153,7 +227,23 @@ input {
   background: var(--surface-strong);
 }
 
+textarea {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--ink);
+  background: var(--surface-strong);
+  resize: vertical;
+}
+
 input:focus {
+  outline: 2px solid color-mix(in srgb, var(--accent) 28%, white);
+  border-color: color-mix(in srgb, var(--accent) 45%, white);
+}
+
+textarea:focus {
   outline: 2px solid color-mix(in srgb, var(--accent) 28%, white);
   border-color: color-mix(in srgb, var(--accent) 45%, white);
 }
@@ -162,6 +252,10 @@ input:focus {
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.actions.single-action {
+  grid-template-columns: 1fr;
 }
 
 button {
@@ -204,6 +298,14 @@ button {
   font-size: 0.9rem;
 }
 
+.helper.status-success {
+  color: var(--good);
+}
+
+.helper.status-error {
+  color: var(--bad);
+}
+
 .result {
   border-top: 4px solid var(--accent);
 }
@@ -235,7 +337,7 @@ button {
 .result-grid {
   display: grid;
   gap: 14px;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .result-item {
@@ -257,6 +359,10 @@ button {
 .result-item.tone-negative {
   border-color: rgba(188, 43, 68, 0.24);
   background: linear-gradient(140deg, rgba(188, 43, 68, 0.11), rgba(255, 255, 255, 0.92));
+}
+
+.result-item.top-balance {
+  min-height: 94px;
 }
 
 .result-title {
@@ -297,6 +403,7 @@ button {
   position: relative;
   padding-left: 18px;
   color: var(--muted);
+  line-height: 1.5;
 }
 
 .plain-list li::before {
@@ -313,9 +420,137 @@ button {
   font-size: 0.9rem;
 }
 
+.policy-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.policy-card {
+  display: grid;
+  gap: 6px;
+  text-decoration: none;
+  background: var(--surface-strong);
+  border: 1px solid rgba(17, 24, 39, 0.1);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.policy-card-button {
+  width: 100%;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.policy-card strong {
+  font-size: 0.95rem;
+}
+
+.policy-card span {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.policy-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, rgba(17, 24, 39, 0.1));
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.modal[hidden] {
+  display: none;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 16, 24, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.modal-panel {
+  position: relative;
+  z-index: 1;
+  width: min(680px, 100%);
+  max-height: 92vh;
+  overflow: auto;
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 28px 70px rgba(8, 14, 24, 0.26);
+  padding: 22px;
+}
+
+.modal-panel h2 {
+  margin-top: 0;
+}
+
+.modal-close {
+  width: auto;
+  min-width: 88px;
+  padding: 8px 12px;
+  margin-left: auto;
+  margin-bottom: 8px;
+}
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 6px 0;
+  color: var(--muted);
+  font-size: 0.87rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--ink);
+}
+
+@media (max-width: 880px) {
+  .overview-grid,
+  .policy-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 700px) {
   body {
     padding: 28px 14px 64px;
+  }
+
+  .site-nav {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .result-head {
@@ -323,8 +558,14 @@ button {
     align-items: flex-start;
   }
 
-  .actions {
+  .actions,
+  .result-grid {
     grid-template-columns: 1fr;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 

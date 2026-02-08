@@ -3,21 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>오늘의 길돈 운세 계산기 | 발견 확률·금액</title>
+  <title>오늘의 길돈 운세 계산기 | 발견 확률·예상 금액</title>
+  <meta name="description" content="오늘 길에서 돈을 주울 확률과 예상 금액을 오락용으로 계산하는 서비스입니다. 계산기, 이용 안내, 개인정보 처리방침, 문의 정보를 제공합니다.">
   <link rel="stylesheet" href="styles.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5354319294441406"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5354319294441406" crossorigin="anonymous"></script>
 </head>
 <body>
   <main class="shell">
-    <header class="hero">
+    <header class="hero" id="top">
+      <nav class="site-nav" aria-label="주요 메뉴">
+        <a class="brand" href="#top">길돈 운세</a>
+        <div class="nav-links">
+          <a href="#calculator">계산기</a>
+          <a href="#quality">운영 원칙</a>
+          <a href="about.html">서비스 소개</a>
+          <a href="privacy.html">개인정보</a>
+          <a href="contact.html">문의</a>
+        </div>
+      </nav>
       <div class="badge">FORTUNE MONEY CALCULATOR</div>
       <h1>오늘의 길돈 운세 계산기</h1>
-      <p class="subtitle">오늘 길에서 돈을 주울 확률과 예상 발견 금액을 재미로 계산합니다.</p>
+      <p class="subtitle">오늘 길에서 돈을 주울 확률과 예상 발견 금액을 재미용 시뮬레이션으로 계산합니다.</p>
       <div class="today">오늘 날짜 <span id="todayText"></span></div>
+      <p class="hero-note">광고 및 서비스 운영 안내: 본 페이지는 독립 콘텐츠로 운영되며, 결과 해석은 오락 목적에 한정됩니다.</p>
     </header>
 
-    <section class="panel form">
+    <section class="panel form" id="calculator">
       <h2>정보 입력</h2>
       <div class="field">
         <label for="nameInput">이름</label>
@@ -31,7 +42,7 @@
         <button id="calcBtn" type="button">오늘 길돈 운세 계산</button>
         <button id="resetBtn" type="button" class="secondary">초기화</button>
       </div>
-      <p class="helper" id="helperText">같은 이름/생년월일은 같은 날에 같은 결과가 나옵니다. 날짜가 바뀌면 길돈 확률/금액도 바뀝니다.</p>
+      <p class="helper" id="helperText">같은 이름·생년월일은 같은 날짜(KST)에서 동일 결과를 반환합니다. 날짜가 바뀌면 확률과 금액도 갱신됩니다.</p>
     </section>
 
     <section class="panel result" aria-live="polite">
@@ -40,41 +51,33 @@
         <div class="result-amount" id="amountText">—</div>
       </div>
       <div class="result-grid">
-        <div class="result-item">
-          <div class="result-title">이름</div>
-          <div class="result-value" id="nameText">—</div>
+        <div class="result-item tone-positive top-balance">
+          <div class="result-title">오늘의 금전 귀인 (초성)</div>
+          <div class="result-value" id="benefactorText">—</div>
+        </div>
+        <div class="result-item tone-negative top-balance">
+          <div class="result-title">오늘의 주의 인물 (초성)</div>
+          <div class="result-value" id="cautionBenefactorText">—</div>
         </div>
         <div class="result-item">
-          <div class="result-title">입력 키</div>
-          <div class="result-value" id="ageText">—</div>
-        </div>
-        <div class="result-item">
-          <div class="result-title">확률 반영 기대값</div>
-          <div class="result-value" id="wageText">—</div>
+          <div class="result-title">오늘 돈운 행동 가이드</div>
+          <div class="result-value" id="auraText">—</div>
         </div>
         <div class="result-item">
           <div class="result-title">발견 확률</div>
           <div class="result-value" id="hoursText">—</div>
         </div>
-        <div class="result-item">
-          <div class="result-title">오늘 돈운 상태</div>
-          <div class="result-value" id="auraText">—</div>
-        </div>
-        <div class="result-item tone-positive">
-          <div class="result-title">오늘의 금전 귀인 (초성)</div>
-          <div class="result-value" id="benefactorText">—</div>
-        </div>
-        <div class="result-item tone-negative">
-          <div class="result-title">오늘의 주의 인물 (초성)</div>
-          <div class="result-value" id="cautionBenefactorText">—</div>
-        </div>
-        <div class="result-item tone-positive">
+        <div class="result-item tone-positive top-balance">
           <div class="result-title">돈운을 부르는 색</div>
           <div class="result-value color-line"><span class="color-chip" id="luckyColorChip"></span><span id="luckyColorText">—</span></div>
         </div>
-        <div class="result-item tone-negative">
+        <div class="result-item tone-negative top-balance">
           <div class="result-title">돈운을 새게 하는 색</div>
           <div class="result-value color-line"><span class="color-chip" id="badColorChip"></span><span id="badColorText">—</span></div>
+        </div>
+        <div class="result-item wide">
+          <div class="result-title">이름</div>
+          <div class="result-value" id="nameText">—</div>
         </div>
         <div class="result-item wide">
           <div class="result-title">계산식</div>
@@ -92,15 +95,60 @@
     </section>
 
     <section class="panel basis">
-      <h2>계산 원리 (운세용 규칙)</h2>
+      <h2>계산 원리 및 이용 고지</h2>
       <ul class="plain-list">
-        <li>본 서비스는 이름·생년월일·당일 날짜를 기반으로 생성한 오락용 지표를 보여주며, 실제 거리 환경·유동 인구·현장 변수는 반영하지 않습니다.</li>
-        <li>표시되는 확률과 금액은 예측 모델이 아니라 운세형 시뮬레이션 결과이며, 통계적 사건 발생 가능성을 보장하지 않습니다.</li>
-        <li>결과값은 동일 입력에 대해 동일 날짜(KST)에서는 동일하게 유지되도록 설계된 결정적 계산값이며, 금융·투자·소득 판단 지표가 아닙니다.</li>
-        <li>따라서 본 결과는 재미 용도로만 활용해야 하며, 실제 수입 추정·투자 의사결정·대출/지출 계획 수립의 근거로 사용하면 안 됩니다.</li>
+        <li>본 서비스는 이름·생년월일·당일 날짜를 조합한 오락용 시뮬레이션 결과를 제공합니다. 실제 거리 환경, 이동 동선, 현장 변수는 반영되지 않습니다.</li>
+        <li>표시되는 확률과 금액은 통계 예측 모델이 아니라 결정적 계산 규칙으로 생성된 가상 지표이며, 사건 발생 가능성을 보장하지 않습니다.</li>
+        <li>동일 입력은 동일 날짜(KST)에서 동일 결과를 반환하도록 설계되어 재현성을 확보하지만, 이는 품질 검증용 계산 일관성이지 실측 정확도를 의미하지 않습니다.</li>
+        <li>결과값은 재미 목적 해석 정보입니다. 실제 수입 추정, 투자 판단, 소비 계획, 신용·대출 관련 의사결정 근거로 사용하면 안 됩니다.</li>
       </ul>
       <p class="footer-note">이 계산기는 오락용 운세 서비스입니다. 실제 수입/투자 판단 근거로 사용하지 마세요.</p>
     </section>
+
+    <section class="panel policy">
+      <h2>운영 정보</h2>
+      <div class="policy-grid">
+        <a class="policy-card" href="about.html">
+          <strong>서비스 소개</strong>
+          <span>운영 목적, 콘텐츠 방향, 업데이트 기준</span>
+        </a>
+        <a class="policy-card" href="privacy.html">
+          <strong>개인정보 처리방침</strong>
+          <span>수집 항목, 처리 목적, 보관 방식</span>
+        </a>
+        <a class="policy-card" href="contact.html">
+          <strong>문의 및 제보</strong>
+          <span>오류 신고, 정책 문의, 콘텐츠 개선 요청</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="panel overview" id="quality">
+      <h2>운영 품질 원칙</h2>
+      <div class="overview-grid">
+        <article class="overview-item">
+          <h3>독립 콘텐츠 우선</h3>
+          <p>계산기 자체 기능, 해석 가이드, 이용 안내를 한 화면에 제공합니다. 광고 유입만을 위한 저품질 랜딩 구조를 지양합니다.</p>
+        </article>
+        <article class="overview-item">
+          <h3>명확한 정보 구조</h3>
+          <p>계산 입력, 결과, 정책 안내, 문의 페이지를 분리해 사용자가 필요한 정보를 쉽게 찾을 수 있도록 구성합니다.</p>
+        </article>
+        <article class="overview-item">
+          <h3>정책 공개</h3>
+          <p>개인정보 처리, 서비스 성격, 문의 채널을 명시해 운영 주체와 서비스 범위를 투명하게 공개합니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>© 오늘의 길돈 운세 계산기</p>
+      <div class="footer-links">
+        <a href="about.html">소개</a>
+        <a href="privacy.html">개인정보</a>
+        <a href="contact.html">문의</a>
+      </div>
+    </footer>
   </main>
 
   <script src="app.js" defer></script>
