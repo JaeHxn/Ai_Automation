@@ -1,4 +1,3 @@
-const RECEIVER_BASE64 = "bHV2c291bEBrYWthby5jb20=";
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
 
 const openContactModalBtn = document.getElementById("openContactModalBtn");
@@ -10,18 +9,7 @@ const contactForm = document.getElementById("contactForm");
 const contactSubmitBtn = document.getElementById("contactSubmitBtn");
 const contactStatusText = document.getElementById("contactStatusText");
 const contactNameInput = document.getElementById("contactName");
-const contactSubjectInput = document.getElementById("contactSubject");
 const contactImageInput = document.getElementById("contactImage");
-const contactMailSubjectInput = document.getElementById("contactMailSubjectInput");
-const contactNextInput = document.getElementById("contactNextInput");
-
-function getReceiverEmail() {
-  try {
-    return atob(RECEIVER_BASE64);
-  } catch (_error) {
-    return "";
-  }
-}
 
 function setContactStatus(message, kind) {
   if (!contactStatusText) {
@@ -41,6 +29,7 @@ function setLoadingState(isLoading) {
   if (!contactSubmitBtn) {
     return;
   }
+
   contactSubmitBtn.disabled = isLoading;
   contactSubmitBtn.textContent = isLoading ? "전송 중..." : "사이트에서 전송";
 }
@@ -101,36 +90,70 @@ function validateFormValues() {
   return true;
 }
 
-function handleSubmit(event) {
-  const receiverEmail = getReceiverEmail();
-  if (!receiverEmail) {
-    event.preventDefault();
-    setContactStatus("메일 전송 설정 오류가 발생했습니다.", "error");
+function mapErrorCodeToMessage(code) {
+  switch (code) {
+    case "REQUIRED_FIELDS_MISSING":
+      return "필수 입력값이 누락되었습니다.";
+    case "ATTACHMENT_REQUIRED":
+      return "이미지 1장을 첨부해 주세요.";
+    case "ATTACHMENT_NOT_IMAGE":
+      return "이미지 파일만 첨부할 수 있습니다.";
+    case "ATTACHMENT_TOO_LARGE":
+      return "이미지 용량은 10MB 이하여야 합니다.";
+    case "DAILY_LIMIT_EXCEEDED_IP":
+    case "DAILY_LIMIT_EXCEEDED_EMAIL":
+      return "하루 문의 한도(5회)를 초과했습니다. 내일 다시 시도해 주세요.";
+    case "UPSTASH_NOT_CONFIGURED":
+    case "CONTACT_RECEIVER_NOT_CONFIGURED":
+      return "서버 설정이 완료되지 않았습니다. 관리자에게 문의해 주세요.";
+    case "FORMSUBMIT_HTTP_ERROR":
+    case "FORMSUBMIT_REJECTED":
+    case "MAIL_FORWARD_FAILED":
+      return "이메일 전송에 실패했습니다. 잠시 후 다시 시도해 주세요.";
+    default:
+      return "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.";
+  }
+}
+
+async function handleSubmit(event) {
+  event.preventDefault();
+
+  if (!contactForm) {
     return;
   }
 
   if (!validateFormValues()) {
-    event.preventDefault();
     return;
   }
 
-  if (contactMailSubjectInput && contactSubjectInput) {
-    const rawSubject = contactSubjectInput.value.trim();
-    contactMailSubjectInput.value = `[길돈 운세 문의] ${rawSubject || "문의 접수"}`;
-  }
-
-  if (contactNextInput) {
-    const baseUrl = `${window.location.origin}${window.location.pathname}`;
-    contactNextInput.value = `${baseUrl}?sent=1`;
-  }
-
-  setContactStatus("문의 내용을 전송하고 있습니다.", "");
   setLoadingState(true);
-}
+  setContactStatus("문의 내용을 전송하고 있습니다.", "");
 
-const receiverEmail = getReceiverEmail();
-if (contactForm && receiverEmail) {
-  contactForm.action = `https://formsubmit.co/${encodeURIComponent(receiverEmail)}`;
+  const payload = new FormData(contactForm);
+
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      body: payload,
+    });
+
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.ok) {
+      const message = mapErrorCodeToMessage(result.code);
+      setContactStatus(message, "error");
+      return;
+    }
+
+    contactForm.reset();
+    setContactStatus("전송이 완료되었습니다. 운영자가 확인 후 회신합니다.", "success");
+  } catch (_error) {
+    setContactStatus(
+      "전송 API에 연결하지 못했습니다. 배포 환경에서 다시 시도해 주세요.",
+      "error",
+    );
+  } finally {
+    setLoadingState(false);
+  }
 }
 
 if (openContactModalBtn) {
@@ -154,12 +177,3 @@ document.addEventListener("keydown", (event) => {
     closeContactModal();
   }
 });
-
-const query = new URLSearchParams(window.location.search);
-if (query.get("sent") === "1") {
-  setContactStatus("전송이 완료되었습니다. 운영자가 확인 후 회신합니다.", "success");
-  openContactModal();
-  query.delete("sent");
-  const cleanedUrl = `${window.location.pathname}${query.toString() ? `?${query.toString()}` : ""}`;
-  window.history.replaceState({}, "", cleanedUrl);
-}

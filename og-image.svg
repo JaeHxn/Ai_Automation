@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="오늘의 길돈 운세 계산기">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eef5f2" />
+      <stop offset="55%" stop-color="#f6f2f3" />
+      <stop offset="100%" stop-color="#f0f3f8" />
+    </linearGradient>
+    <linearGradient id="badge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10835f" />
+      <stop offset="100%" stop-color="#2fa37e" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="1020" cy="120" r="180" fill="#10835f" fill-opacity="0.14" />
+  <circle cx="170" cy="560" r="220" fill="#bc2b44" fill-opacity="0.12" />
+  <rect x="82" y="92" width="420" height="54" rx="27" fill="url(#badge)" />
+  <text x="110" y="127" fill="#ffffff" font-size="28" font-family="Sora, sans-serif" font-weight="700">FORTUNE MONEY CALCULATOR</text>
+  <text x="82" y="248" fill="#111827" font-size="74" font-family="Cormorant Garamond, serif" font-weight="700">오늘의 길돈 운세 계산기</text>
+  <text x="82" y="325" fill="#5b6472" font-size="35" font-family="Sora, sans-serif">오늘 길돈 발견 확률과 예상 금액을 오락용으로 계산합니다.</text>
+  <text x="82" y="404" fill="#5b6472" font-size="28" font-family="Sora, sans-serif">KRW 기준 · KST 날짜 기준 · 결과 일관성 제공</text>
+</svg>
