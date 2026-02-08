@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>오늘의 돈운 계산기 | 운세 조합 계산</title>
+  <title>오늘의 길돈 운세 계산기 | 발견 확률·금액</title>
   <link rel="stylesheet" href="styles.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5354319294441406"
      crossorigin="anonymous"></script>
@@ -12,8 +12,8 @@
   <main class="shell">
     <header class="hero">
       <div class="badge">FORTUNE MONEY CALCULATOR</div>
-      <h1>오늘의 돈운 계산기</h1>
-      <p class="subtitle">이름 + 생년월일 조합을 오늘 날짜(KST)에 섞어 재미로 계산합니다.</p>
+      <h1>오늘의 길돈 운세 계산기</h1>
+      <p class="subtitle">오늘 길에서 돈을 주울 확률과 예상 발견 금액을 재미로 계산합니다.</p>
       <div class="today">오늘 날짜 <span id="todayText"></span></div>
     </header>
 
@@ -28,15 +28,15 @@
         <input id="dobInput" type="date" required>
       </div>
       <div class="actions">
-        <button id="calcBtn" type="button">오늘 돈운 계산</button>
+        <button id="calcBtn" type="button">오늘 길돈 운세 계산</button>
         <button id="resetBtn" type="button" class="secondary">초기화</button>
       </div>
-      <p class="helper" id="helperText">같은 이름/생년월일은 같은 날에 같은 결과가 나옵니다. 날짜가 바뀌면 결과도 바뀝니다.</p>
+      <p class="helper" id="helperText">같은 이름/생년월일은 같은 날에 같은 결과가 나옵니다. 날짜가 바뀌면 길돈 확률/금액도 바뀝니다.</p>
     </section>
 
     <section class="panel result" aria-live="polite">
       <div class="result-head">
-        <div class="result-label">오늘의 돈운 금액 (KRW)</div>
+        <div class="result-label">오늘 주웠을 때 예상 금액 (KRW)</div>
         <div class="result-amount" id="amountText">—</div>
       </div>
       <div class="result-grid">
@@ -49,11 +49,11 @@
           <div class="result-value" id="ageText">—</div>
         </div>
         <div class="result-item">
-          <div class="result-title">기본 금액</div>
+          <div class="result-title">확률 반영 기대값</div>
           <div class="result-value" id="wageText">—</div>
         </div>
         <div class="result-item">
-          <div class="result-title">오늘 계수</div>
+          <div class="result-title">발견 확률</div>
           <div class="result-value" id="hoursText">—</div>
         </div>
         <div class="result-item">
@@ -93,6 +93,12 @@
 
     <section class="panel basis">
       <h2>계산 원리 (운세용 규칙)</h2>
+      <ul class="plain-list">
+        <li>본 서비스는 이름·생년월일·당일 날짜를 기반으로 생성한 오락용 지표를 보여주며, 실제 거리 환경·유동 인구·현장 변수는 반영하지 않습니다.</li>
+        <li>표시되는 확률과 금액은 예측 모델이 아니라 운세형 시뮬레이션 결과이며, 통계적 사건 발생 가능성을 보장하지 않습니다.</li>
+        <li>결과값은 동일 입력에 대해 동일 날짜(KST)에서는 동일하게 유지되도록 설계된 결정적 계산값이며, 금융·투자·소득 판단 지표가 아닙니다.</li>
+        <li>따라서 본 결과는 재미 용도로만 활용해야 하며, 실제 수입 추정·투자 의사결정·대출/지출 계획 수립의 근거로 사용하면 안 됩니다.</li>
+      </ul>
       <p class="footer-note">이 계산기는 오락용 운세 서비스입니다. 실제 수입/투자 판단 근거로 사용하지 마세요.</p>
     </section>
   </main>

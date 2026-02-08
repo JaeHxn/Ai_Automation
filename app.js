@@ -1,5 +1,5 @@
 ﻿const DAY_NAMES = ["일", "월", "화", "수", "목", "금", "토"];
-const INITIAL_MESSAGE = "이름과 생년월일 입력 후 \"오늘 돈운 계산\"을 누르세요.";
+const INITIAL_MESSAGE = "이름과 생년월일 입력 후 \"오늘 길돈 운세 계산\"을 누르세요.";
 
 const nameInput = document.getElementById("nameInput");
 const dobInput = document.getElementById("dobInput");
@@ -346,19 +346,31 @@ function buildFortune(name, dobValue, todayInfo) {
   const fixedHash = hashFNV1a(fixedSeed);
   const dailyHash = hashFNV1a(dailySeed);
 
-  const baseAmount = (30 + (fixedHash % 271)) * 1000;
-  const mixFactor = 0.8 + (((fixedHash >>> 8) % 91) / 100);
+  const pickupBaseAmount = (10 + (fixedHash % 341)) * 100;
+  const pickupTrend = 0.9 + (((fixedHash >>> 9) % 41) / 100);
   const dailyFactor = 0.85 + (((dailyHash + todayInfo.dayOfYear) % 56) / 100);
   const luckyScore = 1 + (dailyHash % 100);
 
-  const finalAmount = Math.round((baseAmount * mixFactor * dailyFactor) / 100) * 100;
+  const pickupAmount = Math.max(
+    100,
+    Math.round((pickupBaseAmount * pickupTrend * (0.9 + (luckyScore / 250))) / 100) * 100,
+  );
+  const probabilityBase = 0.8 + ((dailyHash % 720) / 100);
+  const probabilityPercent = Math.min(
+    18.75,
+    Number((probabilityBase * (0.65 + (dailyFactor / 1.9))).toFixed(2)),
+  );
+  const expectedValue = Math.max(
+    10,
+    Math.round(((pickupAmount * probabilityPercent) / 100) / 10) * 10,
+  );
 
   return {
-    baseAmount,
-    mixFactor,
+    pickupAmount,
+    probabilityPercent,
+    expectedValue,
     dailyFactor,
     luckyScore,
-    finalAmount,
     fixedHash,
     dailyHash,
     inputKey: dailyHash.toString(16).toUpperCase().padStart(8, "0"),
@@ -427,11 +439,11 @@ function compute() {
   const aura = getMoneyAura(fortune.luckyScore);
   applyMoodTheme(fortune.luckyScore);
 
-  amountText.textContent = krw.format(fortune.finalAmount);
+  amountText.textContent = krw.format(fortune.pickupAmount);
   nameText.textContent = `${rawName} (${dobValue})`;
   ageText.textContent = `#${fortune.inputKey}`;
-  wageText.textContent = krw.format(fortune.baseAmount);
-  hoursText.textContent = `조합 ${fortune.mixFactor.toFixed(2)} × 오늘 ${fortune.dailyFactor.toFixed(2)}`;
+  wageText.textContent = krw.format(fortune.expectedValue);
+  hoursText.textContent = `${fortune.probabilityPercent.toFixed(2)}%`;
   auraText.textContent = `${aura} (${fortune.luckyScore}점)`;
   benefactorText.textContent = benefactor.initials;
   cautionBenefactorText.textContent = cautionBenefactor.initials;
@@ -441,9 +453,9 @@ function compute() {
   badColorChip.style.backgroundColor = badColor.hex;
   luckyColorChip.style.borderColor = luckyColor.hex;
   badColorChip.style.borderColor = badColor.hex;
-  ruleText.textContent = `${krw.format(fortune.baseAmount)} × ${fortune.mixFactor.toFixed(2)} × ${fortune.dailyFactor.toFixed(2)} (100원 반올림)`;
+  ruleText.textContent = `발견 확률 ${fortune.probabilityPercent.toFixed(2)}% × 예상 발견 금액 ${krw.format(fortune.pickupAmount)} = 기대값 ${krw.format(fortune.expectedValue)}`;
   missionText.textContent = mission;
-  noteText.textContent = "오락용 결과입니다. 귀인/색상 해석은 재미 요소이며 실제 재무 판단 근거로 사용하지 마세요.";
+  noteText.textContent = "오락용 결과입니다. 확률/금액/귀인/색상 해석은 재미 요소이며 실제 재무 판단 근거로 사용하지 마세요.";
 }
 
 function resetForm() {
