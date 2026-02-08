@@ -1,6 +1,9 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum:wght@400;700&display=swap");
 
 :root {
+  --font-body: "Gowun Dodum", "Noto Sans KR", sans-serif;
+  --font-title: "Gowun Batang", "Noto Serif KR", serif;
+
   --ink: #10233f;
   --muted: #4f6078;
   --surface: rgba(255, 255, 255, 0.95);
@@ -24,7 +27,7 @@
 
 body {
   margin: 0;
-  font-family: "Gowun Dodum", "Noto Sans KR", sans-serif;
+  font-family: var(--font-body);
   color: var(--ink);
   min-height: 100vh;
   padding: 40px 20px 84px;
@@ -124,9 +127,10 @@ a {
 
 h1 {
   margin: 0;
-  font-family: "Jua", "Gowun Dodum", sans-serif;
+  font-family: var(--font-title);
+  font-weight: 400;
   font-size: clamp(2.5rem, 4.3vw, 3.8rem);
-  line-height: 1;
+  line-height: 1.12;
   letter-spacing: 0.01em;
 }
 
@@ -163,7 +167,8 @@ h1 {
 
 .panel h2 {
   margin: 0 0 16px;
-  font-family: "Jua", "Gowun Dodum", sans-serif;
+  font-family: var(--font-title);
+  font-weight: 700;
   font-size: 1.65rem;
   letter-spacing: 0.02em;
 }
@@ -345,7 +350,8 @@ button {
 }
 
 .result-amount {
-  font-family: "Jua", "Gowun Dodum", sans-serif;
+  font-family: var(--font-title);
+  font-weight: 700;
   font-size: clamp(2.1rem, 3.3vw, 2.9rem);
   color: #0b8e61;
   letter-spacing: 0.02em;
@@ -405,7 +411,7 @@ button {
   padding: 5px 10px;
   border-radius: 999px;
   font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #ffffff;
   background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 86%, #0f172a), color-mix(in srgb, var(--accent) 66%, #7df2cb));
   box-shadow: 0 8px 18px var(--accent-shadow);
@@ -811,4 +817,5 @@ body.modal-open {
     transition: none !important;
   }
 }
+
 

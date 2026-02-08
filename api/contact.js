@@ -1,4 +1,4 @@
-export const config = {
+﻿export const config = {
   runtime: "edge",
 };
 
@@ -205,7 +205,7 @@ export default async function handler(request) {
 [문의 내용]
 ${message}`,
   );
-  forwardPayload.set("_subject", `[길돈 운세 문의] ${subject}`);
+  forwardPayload.set("_subject", `[금전 운세 문의] ${subject}`);
   forwardPayload.set("_captcha", "false");
   forwardPayload.set("_template", "table");
   forwardPayload.set("attachment", attachment, attachment.name || "upload-image");
@@ -223,3 +223,4 @@ ${message}`,
     });
   }
 }
+

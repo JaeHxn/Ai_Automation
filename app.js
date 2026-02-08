@@ -1,5 +1,5 @@
 ﻿const DAY_NAMES = ["일", "월", "화", "수", "목", "금", "토"];
-const INITIAL_MESSAGE = "이름과 생년월일 입력 후 \"오늘 길돈 운세 계산\"을 누르세요.";
+const INITIAL_MESSAGE = "이름과 생년월일 입력 후 \"오늘 금전 운세 계산\"을 누르세요.";
 
 const nameInput = document.getElementById("nameInput");
 const dobInput = document.getElementById("dobInput");
@@ -697,7 +697,7 @@ async function buildShareCardBlob(payload) {
   context.fillText("오락용 결과 공유 카드 · 실제 재무 판단 근거로 사용 금지", 138, 866);
   context.fillStyle = "#6b7280";
   context.font = "500 22px Sora, sans-serif";
-  context.fillText("오늘 길에서 돈 줍는 확률 계산기", 138, 910);
+  context.fillText("나의 금전 운세 테스트", 138, 910);
 
   return new Promise((resolve) => {
     canvas.toBlob((blob) => resolve(blob), "image/png");
@@ -891,5 +891,7 @@ if (copyUrlBtn) {
 }
 syncToday();
 setResultEmpty(INITIAL_MESSAGE);
+
+
 
 
