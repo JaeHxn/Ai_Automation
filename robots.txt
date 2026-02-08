@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jaehxn.github.io/Ai_Automation/sitemap.xml
+Sitemap: https://ai-automation-djq.pages.dev/sitemap.xml

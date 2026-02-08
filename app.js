@@ -697,7 +697,7 @@ async function buildShareCardBlob(payload) {
   context.fillText("오락용 결과 공유 카드 · 실제 재무 판단 근거로 사용 금지", 138, 866);
   context.fillStyle = "#6b7280";
   context.font = "500 22px Sora, sans-serif";
-  context.fillText("오늘의 길돈 운세 계산기", 138, 910);
+  context.fillText("오늘 길에서 돈 줍는 확률 계산기", 138, 910);
 
   return new Promise((resolve) => {
     canvas.toBlob((blob) => resolve(blob), "image/png");
@@ -891,4 +891,5 @@ if (copyUrlBtn) {
 }
 syncToday();
 setResultEmpty(INITIAL_MESSAGE);
+
 
