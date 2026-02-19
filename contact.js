@@ -9,7 +9,9 @@ const contactForm = document.getElementById("contactForm");
 const contactSubmitBtn = document.getElementById("contactSubmitBtn");
 const contactStatusText = document.getElementById("contactStatusText");
 const contactNameInput = document.getElementById("contactName");
+const contactSubjectInput = document.getElementById("contactSubject");
 const contactImageInput = document.getElementById("contactImage");
+const DIRECT_FORMSUBMIT_ENDPOINT = "https://formsubmit.co/luvsoul@kakao.com";
 
 function setContactStatus(message, kind) {
   if (!contactStatusText) {
@@ -110,6 +112,61 @@ function mapErrorCodeToMessage(code) {
   }
 }
 
+function shouldTryDirectFallback(httpStatus, code) {
+  if (httpStatus === 404 || httpStatus === 405 || httpStatus >= 500) {
+    return true;
+  }
+
+  return [
+    "CONTACT_RECEIVER_NOT_CONFIGURED",
+    "FORMSUBMIT_HTTP_ERROR",
+    "FORMSUBMIT_REJECTED",
+    "MAIL_FORWARD_FAILED",
+  ].includes(code);
+}
+
+function appendHiddenField(form, name, value) {
+  const input = document.createElement("input");
+  input.type = "hidden";
+  input.name = name;
+  input.value = value;
+  form.appendChild(input);
+  return input;
+}
+
+function submitViaDirectFormSubmit() {
+  if (!contactForm) {
+    return false;
+  }
+
+  const originalAction = contactForm.getAttribute("action") || "";
+  const originalMethod = contactForm.getAttribute("method") || "POST";
+  const originalTarget = contactForm.getAttribute("target") || "";
+
+  const subjectText = contactSubjectInput ? contactSubjectInput.value.trim() : "문의";
+  const hiddenFields = [
+    appendHiddenField(contactForm, "_subject", `[금전 운세 문의] ${subjectText || "문의"}`),
+    appendHiddenField(contactForm, "_captcha", "false"),
+    appendHiddenField(contactForm, "_template", "table"),
+    appendHiddenField(contactForm, "_next", window.location.href),
+  ];
+
+  try {
+    contactForm.setAttribute("action", DIRECT_FORMSUBMIT_ENDPOINT);
+    contactForm.setAttribute("method", "POST");
+    contactForm.setAttribute("target", "_self");
+    contactForm.submit();
+    return true;
+  } catch (_error) {
+    return false;
+  } finally {
+    contactForm.setAttribute("action", originalAction);
+    contactForm.setAttribute("method", originalMethod);
+    contactForm.setAttribute("target", originalTarget);
+    hiddenFields.forEach((field) => field.remove());
+  }
+}
+
 async function handleSubmit(event) {
   event.preventDefault();
 
@@ -134,6 +191,17 @@ async function handleSubmit(event) {
 
     const result = await response.json().catch(() => ({}));
     if (!response.ok || !result.ok) {
+      if (shouldTryDirectFallback(response.status, result.code)) {
+        const forwarded = submitViaDirectFormSubmit();
+        if (forwarded) {
+          setContactStatus(
+            "서버 API 전송에 실패하여 직접 전송 페이지로 이동합니다. FormSubmit 인증 메일 확인 후 전송을 완료해 주세요.",
+            "success",
+          );
+          return;
+        }
+      }
+
       let message = mapErrorCodeToMessage(result.code);
       if (response.status === 404 || response.status === 405) {
         message = "현재 배포 환경에서 문의 API가 비활성화되어 있습니다. 서버리스 함수 배포 상태를 확인해 주세요.";
@@ -145,6 +213,15 @@ async function handleSubmit(event) {
     contactForm.reset();
     setContactStatus("전송이 완료되었습니다. 운영자가 확인 후 회신합니다.", "success");
   } catch (_error) {
+    const forwarded = submitViaDirectFormSubmit();
+    if (forwarded) {
+      setContactStatus(
+        "API 연결 실패로 직접 전송 페이지로 이동합니다. FormSubmit 인증 메일 확인 후 전송을 완료해 주세요.",
+        "success",
+      );
+      return;
+    }
+
     setContactStatus(
       "전송 API에 연결하지 못했습니다. 네트워크 또는 배포 환경을 확인한 후 다시 시도해 주세요.",
       "error",
