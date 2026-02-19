@@ -631,6 +631,137 @@ button {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.blog-post-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.blog-post-card {
+  background: var(--surface-strong);
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  border-radius: 14px;
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.blog-post-card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.blog-post-card h3 a {
+  text-decoration: none;
+}
+
+.blog-post-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.blog-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.card-meta {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.chip-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.topic-chip {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(16, 35, 63, 0.08);
+  border: 1px solid rgba(16, 35, 63, 0.12);
+  font-size: 0.78rem;
+}
+
+.related-links {
+  display: grid;
+  gap: 10px;
+}
+
+.related-links a {
+  display: grid;
+  gap: 4px;
+  text-decoration: none;
+  background: var(--surface-strong);
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.related-links a span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.ordered-list {
+  list-style: decimal;
+  padding-left: 22px;
+}
+
+.ordered-list li {
+  padding-left: 2px;
+}
+
+.ordered-list li::before {
+  content: none;
+}
+
+.info-box {
+  border: 1px solid rgba(16, 35, 63, 0.12);
+  border-radius: 12px;
+  background: rgba(16, 35, 63, 0.03);
+  padding: 12px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.insight-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 540px;
+}
+
+.insight-table th,
+.insight-table td {
+  border: 1px solid rgba(17, 24, 39, 0.16);
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.insight-table th {
+  background: rgba(16, 35, 63, 0.08);
+  font-size: 0.9rem;
+}
+
+.compact-links {
+  gap: 12px;
+}
+
+.compact-links a {
+  font-size: 0.88rem;
+}
+
 .blog-card {
   display: grid;
   gap: 8px;
@@ -772,7 +903,8 @@ body.modal-open {
 @media (max-width: 880px) {
   .overview-grid,
   .policy-grid,
-  .blog-grid {
+  .blog-grid,
+  .blog-post-grid {
     grid-template-columns: 1fr;
   }
 

@@ -14,7 +14,7 @@ Use `.env.example` as a template.
 
 ## 3) Contact limits
 - Enforced in backend: max 5 submissions per day (KST) by IP and by sender email.
-- Image upload is limited to one image file, max 10MB.
+- Image upload is optional, and if attached must be one image file up to 10MB.
 
 ## 4) AdSense ads.txt
 - `ads.txt` must be reachable at:
@@ -32,5 +32,5 @@ Use `.env.example` as a template.
 
 ## 6) Domain value updates
 - Current canonical/Open Graph URLs are set to:
-  - `https://jaehxn.github.io/Ai_Automation/`
+  - `https://ai-automation-djq.pages.dev/`
 - If you deploy to another domain, replace canonical/og URLs in all HTML pages.

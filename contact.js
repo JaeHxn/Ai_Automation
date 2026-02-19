@@ -72,19 +72,16 @@ function validateFormValues() {
     return false;
   }
 
-  if (!attachment) {
-    setContactStatus("이미지 1장을 첨부해 주세요.", "error");
-    return false;
-  }
+  if (attachment) {
+    if (!attachment.type || !attachment.type.startsWith("image/")) {
+      setContactStatus("이미지 파일만 첨부할 수 있습니다.", "error");
+      return false;
+    }
 
-  if (!attachment.type || !attachment.type.startsWith("image/")) {
-    setContactStatus("이미지 파일만 첨부할 수 있습니다.", "error");
-    return false;
-  }
-
-  if (attachment.size > MAX_IMAGE_BYTES) {
-    setContactStatus("이미지 용량은 10MB 이하여야 합니다.", "error");
-    return false;
+    if (attachment.size > MAX_IMAGE_BYTES) {
+      setContactStatus("이미지 용량은 10MB 이하여야 합니다.", "error");
+      return false;
+    }
   }
 
   return true;
@@ -94,8 +91,6 @@ function mapErrorCodeToMessage(code) {
   switch (code) {
     case "REQUIRED_FIELDS_MISSING":
       return "필수 입력값이 누락되었습니다.";
-    case "ATTACHMENT_REQUIRED":
-      return "이미지 1장을 첨부해 주세요.";
     case "ATTACHMENT_NOT_IMAGE":
       return "이미지 파일만 첨부할 수 있습니다.";
     case "ATTACHMENT_TOO_LARGE":

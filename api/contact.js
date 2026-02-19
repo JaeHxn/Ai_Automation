@@ -95,7 +95,11 @@ async function incrementDailyCounter(scope, rawValue, dateKey) {
 
 function validateAttachment(file) {
   if (!(file instanceof File)) {
-    return "ATTACHMENT_REQUIRED";
+    return null;
+  }
+
+  if (!file.name && file.size === 0) {
+    return null;
   }
 
   if (!file.type || !file.type.startsWith("image/")) {
@@ -208,7 +212,9 @@ ${message}`,
   forwardPayload.set("_subject", `[금전 운세 문의] ${subject}`);
   forwardPayload.set("_captcha", "false");
   forwardPayload.set("_template", "table");
-  forwardPayload.set("attachment", attachment, attachment.name || "upload-image");
+  if (attachment instanceof File && attachment.size > 0) {
+    forwardPayload.set("attachment", attachment, attachment.name || "upload-image");
+  }
 
   try {
     await forwardToFormSubmit(forwardPayload);
