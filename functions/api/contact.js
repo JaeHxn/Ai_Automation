@@ -1,6 +1,7 @@
 const DAILY_LIMIT = 5;
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
 const KEY_TTL_SECONDS = 60 * 60 * 24 * 2;
+const DEFAULT_CONTACT_RECEIVER_EMAIL = "luvsoul@kakao.com";
 
 function jsonResponse(status, payload) {
   return new Response(JSON.stringify(payload), {
@@ -114,7 +115,7 @@ function validateAttachment(file) {
 }
 
 async function forwardToFormSubmit(env, payload) {
-  const receiver = env.CONTACT_RECEIVER_EMAIL;
+  const receiver = env.CONTACT_RECEIVER_EMAIL || DEFAULT_CONTACT_RECEIVER_EMAIL;
   if (!receiver) {
     throw new Error("CONTACT_RECEIVER_NOT_CONFIGURED");
   }

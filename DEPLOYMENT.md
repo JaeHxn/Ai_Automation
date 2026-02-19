@@ -11,6 +11,7 @@
 - `UPSTASH_REDIS_REST_URL` (optional): Upstash Redis REST URL for daily rate limits.
 - `UPSTASH_REDIS_REST_TOKEN` (optional): Upstash Redis REST token for daily rate limits.
 
+If `CONTACT_RECEIVER_EMAIL` is missing, code fallback receiver is `luvsoul@kakao.com`.
 If Upstash values are missing, mail send still works and daily limit checks are skipped.
 
 Use `.env.example` as a template.
