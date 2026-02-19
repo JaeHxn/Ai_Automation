@@ -127,14 +127,17 @@ async function handleSubmit(event) {
   const payload = new FormData(contactForm);
 
   try {
-    const response = await fetch("/api/contact", {
+    const response = await fetch("api/contact", {
       method: "POST",
       body: payload,
     });
 
     const result = await response.json().catch(() => ({}));
     if (!response.ok || !result.ok) {
-      const message = mapErrorCodeToMessage(result.code);
+      let message = mapErrorCodeToMessage(result.code);
+      if (response.status === 404 || response.status === 405) {
+        message = "현재 배포 환경에서 문의 API가 비활성화되어 있습니다. 서버리스 함수 배포 상태를 확인해 주세요.";
+      }
       setContactStatus(message, "error");
       return;
     }
@@ -143,7 +146,7 @@ async function handleSubmit(event) {
     setContactStatus("전송이 완료되었습니다. 운영자가 확인 후 회신합니다.", "success");
   } catch (_error) {
     setContactStatus(
-      "전송 API에 연결하지 못했습니다. 배포 환경에서 다시 시도해 주세요.",
+      "전송 API에 연결하지 못했습니다. 네트워크 또는 배포 환경을 확인한 후 다시 시도해 주세요.",
       "error",
     );
   } finally {

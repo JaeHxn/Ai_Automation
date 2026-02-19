@@ -2,13 +2,16 @@
 
 ## 1) Serverless API runtime
 - `contact.js` calls `POST /api/contact`.
-- `api/contact.js` must run on a platform that supports serverless functions (for example, Vercel).
-- Plain GitHub Pages cannot execute `api/contact.js`.
+- `api/contact.js` is for Vercel Runtime.
+- `functions/api/contact.js` is for Cloudflare Pages Functions.
+- Plain GitHub Pages cannot execute either runtime API file.
 
 ## 2) Required environment variables
 - `CONTACT_RECEIVER_EMAIL`: destination email address.
-- `UPSTASH_REDIS_REST_URL`: Upstash Redis REST URL.
-- `UPSTASH_REDIS_REST_TOKEN`: Upstash Redis REST token.
+- `UPSTASH_REDIS_REST_URL` (optional): Upstash Redis REST URL for daily rate limits.
+- `UPSTASH_REDIS_REST_TOKEN` (optional): Upstash Redis REST token for daily rate limits.
+
+If Upstash values are missing, mail send still works and daily limit checks are skipped.
 
 Use `.env.example` as a template.
 

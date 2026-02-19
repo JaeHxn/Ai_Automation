@@ -1,7 +1,3 @@
-﻿export const config = {
-  runtime: "edge",
-};
-
 const DAILY_LIMIT = 5;
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
 const KEY_TTL_SECONDS = 60 * 60 * 24 * 2;
@@ -56,9 +52,9 @@ async function sha256(text) {
     .join("");
 }
 
-async function runUpstashPipeline(commands) {
-  const baseUrl = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+async function runUpstashPipeline(env, commands) {
+  const baseUrl = env.UPSTASH_REDIS_REST_URL;
+  const token = env.UPSTASH_REDIS_REST_TOKEN;
 
   if (!baseUrl || !token) {
     return null;
@@ -80,15 +76,15 @@ async function runUpstashPipeline(commands) {
   return response.json();
 }
 
-async function incrementDailyCounter(scope, rawValue, dateKey) {
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+async function incrementDailyCounter(env, scope, rawValue, dateKey) {
+  if (!env.UPSTASH_REDIS_REST_URL || !env.UPSTASH_REDIS_REST_TOKEN) {
     return null;
   }
 
   const hashedValue = await sha256(rawValue);
   const key = `contact:${scope}:${dateKey}:${hashedValue.slice(0, 32)}`;
 
-  const pipelineResult = await runUpstashPipeline([
+  const pipelineResult = await runUpstashPipeline(env, [
     ["INCR", key],
     ["EXPIRE", key, KEY_TTL_SECONDS],
   ]);
@@ -117,8 +113,8 @@ function validateAttachment(file) {
   return null;
 }
 
-async function forwardToFormSubmit(payload) {
-  const receiver = process.env.CONTACT_RECEIVER_EMAIL;
+async function forwardToFormSubmit(env, payload) {
+  const receiver = env.CONTACT_RECEIVER_EMAIL;
   if (!receiver) {
     throw new Error("CONTACT_RECEIVER_NOT_CONFIGURED");
   }
@@ -143,14 +139,7 @@ async function forwardToFormSubmit(payload) {
   }
 }
 
-export default async function handler(request) {
-  if (request.method !== "POST") {
-    return jsonResponse(405, {
-      ok: false,
-      code: "METHOD_NOT_ALLOWED",
-    });
-  }
-
+async function handleRequest(request, env) {
   const formData = await request.formData();
   const name = normalizeText(formData.get("name"));
   const email = normalizeText(formData.get("email")).toLowerCase();
@@ -177,7 +166,7 @@ export default async function handler(request) {
   const clientIp = getClientIp(request);
 
   try {
-    const ipCount = await incrementDailyCounter("ip", `${clientIp}|${dateKey}`, dateKey);
+    const ipCount = await incrementDailyCounter(env, "ip", `${clientIp}|${dateKey}`, dateKey);
     if (typeof ipCount === "number" && ipCount > DAILY_LIMIT) {
       return jsonResponse(429, {
         ok: false,
@@ -185,7 +174,7 @@ export default async function handler(request) {
       });
     }
 
-    const emailCount = await incrementDailyCounter("email", `${email}|${dateKey}`, dateKey);
+    const emailCount = await incrementDailyCounter(env, "email", `${email}|${dateKey}`, dateKey);
     if (typeof emailCount === "number" && emailCount > DAILY_LIMIT) {
       return jsonResponse(429, {
         ok: false,
@@ -193,10 +182,9 @@ export default async function handler(request) {
       });
     }
   } catch (error) {
-    const errorCode = String(error?.message || "");
     return jsonResponse(500, {
       ok: false,
-      code: errorCode || "RATE_LIMIT_ERROR",
+      code: String(error?.message || "RATE_LIMIT_ERROR"),
     });
   }
 
@@ -221,7 +209,7 @@ ${message}`,
   }
 
   try {
-    await forwardToFormSubmit(forwardPayload);
+    await forwardToFormSubmit(env, forwardPayload);
     return jsonResponse(200, {
       ok: true,
       code: "SENT",
@@ -234,3 +222,6 @@ ${message}`,
   }
 }
 
+export async function onRequestPost(context) {
+  return handleRequest(context.request, context.env);
+}
