@@ -1,10 +1,10 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>문의 | 나의 금전 운세 테스트</title>
-  <meta name="description" content="나의 금전 운세 테스트 오류 제보, 정책 문의, 개선 요청 접수 안내입니다.">
+  <meta name="description" content="금전 운세 결과 오류 제보, 해설 수정 요청, 정책 문의를 접수하는 페이지입니다. 공개 이메일과 사이트 내 문의 폼을 함께 제공합니다.">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="google-adsense-account" content="ca-pub-5354319294441406">
   <meta name="theme-color" content="#10835f">
@@ -14,12 +14,12 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="나의 금전 운세 테스트">
   <meta property="og:title" content="문의 | 나의 금전 운세 테스트">
-  <meta property="og:description" content="오류 제보, 정책 문의, 개선 요청을 이메일 폼으로 접수할 수 있습니다.">
+  <meta property="og:description" content="오류 제보, 해설 수정 요청, 정책 문의를 위한 공개 이메일과 문의 폼 안내">
   <meta property="og:url" content="https://ai-automation-djq.pages.dev/contact.html">
   <meta property="og:image" content="https://ai-automation-djq.pages.dev/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="문의 | 나의 금전 운세 테스트">
-  <meta name="twitter:description" content="오류 제보, 정책 문의, 개선 요청을 이메일 폼으로 접수할 수 있습니다.">
+  <meta name="twitter:description" content="금전 운세 서비스 관련 문의 유형과 공개 이메일을 확인할 수 있습니다.">
   <meta name="twitter:image" content="https://ai-automation-djq.pages.dev/og-image.svg">
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
@@ -44,7 +44,7 @@
         <a class="brand" href="index.html">금전 운세</a>
         <div class="nav-links">
           <a href="index.html#calculator">계산기</a>
-          <a href="blog/">블로그</a>
+          <a href="blog/">해설 라이브러리</a>
           <a href="methodology.html">계산 방법</a>
           <a href="editorial-policy.html">편집 원칙</a>
           <a href="about.html">서비스 소개</a>
@@ -54,15 +54,26 @@
       </nav>
       <div class="badge">CONTACT</div>
       <h1>문의 및 제보</h1>
-      <p class="subtitle">서비스 개선 제안, 오류 제보, 정책 문의를 받습니다. 운영팀 기준 1일 전송 한도는 5회입니다.</p>
+      <p class="subtitle">금전 운세 계산 결과 오류, 해설 문서 수정 요청, 정책 문의를 접수합니다. 운영팀 기준 1일 전송 한도는 5회입니다.</p>
     </header>
 
     <section class="panel">
-      <h2>문의 채널</h2>
+      <h2>공개 문의 채널</h2>
+      <div class="story-grid">
+        <div class="info-box">
+          <strong>공개 이메일</strong>
+          <p><a href="mailto:luvsoul@kakao.com">luvsoul@kakao.com</a></p>
+          <p class="footer-note">짧은 문의나 직접 제보는 이메일로 보낼 수 있습니다.</p>
+        </div>
+        <div class="info-box">
+          <strong>사이트 내 접수</strong>
+          <p>아래의 이메일 접수 팝업을 열어 제목, 내용, 선택 첨부 이미지를 함께 보낼 수 있습니다.</p>
+        </div>
+      </div>
       <div class="policy-grid">
         <button class="policy-card policy-card-button" id="openContactModalBtn" type="button">
           <strong>이메일 접수 팝업 열기</strong>
-          <span>불편사항, 오류 제보, 개선 의견을 이메일로 보내려면 클릭해 주세요.</span>
+          <span>사이트 안에서 바로 문의 내용을 작성해 보낼 수 있습니다.</span>
         </button>
         <a class="policy-card" href="privacy.html">
           <strong>개인정보 정책 확인</strong>
@@ -70,29 +81,33 @@
         </a>
         <a class="policy-card" href="about.html">
           <strong>서비스 정보 확인</strong>
-          <span>문의 전 서비스 소개 페이지에서 운영 원칙을 먼저 확인할 수 있습니다.</span>
+          <span>문의 전 서비스 운영 목적과 공개 범위를 먼저 볼 수 있습니다.</span>
         </a>
       </div>
     </section>
 
     <section class="panel">
-      <h2>이메일 문의 안내</h2>
-      <p class="helper">상단의 <strong>이메일 접수 팝업 열기</strong>를 누르면 전송 창이 열립니다.</p>
+      <h2>접수 가능한 문의 유형</h2>
+      <ul class="plain-list">
+        <li>계산 결과 오류 제보: 결과 노출 이상, 공유 카드 문제, 캘린더 표시 오류</li>
+        <li>해설 문서 수정 요청: 오탈자, 오해 가능 문구, 잘못된 링크, 구조 개선 제안</li>
+        <li>정책 문의: 개인정보 처리, 운영 원칙, 광고 재개 여부, 향후 계획 문의</li>
+      </ul>
     </section>
 
     <section class="panel">
       <h2>빠른 처리 가이드</h2>
       <ul class="plain-list">
-        <li>오류 제보 시 브라우저 종류, 발생 시각, 입력값 형태(민감정보 제외), 재현 절차를 함께 전달해 주세요.</li>
-        <li>정책 문의는 문의 목적과 필요한 답변 범위를 명확히 작성해 주시면 처리 속도가 빨라집니다.</li>
-        <li>운영자는 접수 순서대로 확인하며, 스팸/비정상 요청은 답변이 제한될 수 있습니다.</li>
+        <li>오류 제보 시 브라우저 종류, 발생 시각, 입력값 형식(민감정보 제외), 재현 절차를 함께 적어 주세요.</li>
+        <li>문서 수정 요청은 문제 문장과 원하는 수정 방향을 같이 남겨 주면 검토가 빠릅니다.</li>
+        <li>정책 문의는 질문 범위를 좁게 적을수록 회신 품질이 좋아집니다.</li>
       </ul>
       <div class="info-box">
         <strong>응답 기준</strong>
         <ul class="plain-list">
           <li>접수 확인: 영업일 기준 1일 이내</li>
-          <li>정정 필요 여부 1차 회신: 영업일 기준 3일 이내</li>
-          <li>정책성/사실성 수정 반영: 영업일 기준 7일 이내 목표</li>
+          <li>1차 검토: 영업일 기준 3일 이내</li>
+          <li>수정 반영 또는 회신: 영업일 기준 7일 이내 목표</li>
         </ul>
       </div>
     </section>
@@ -126,11 +141,11 @@
         </div>
         <div class="field">
           <label for="contactSubject">문의 제목</label>
-          <input id="contactSubject" name="subject" type="text" placeholder="예: 기능 제안 문의" required>
+          <input id="contactSubject" name="subject" type="text" placeholder="예: 금전 운세 결과 오류 제보" required>
         </div>
         <div class="field">
           <label for="contactMessage">문의 내용</label>
-          <textarea id="contactMessage" name="message" rows="7" placeholder="문의 내용을 구체적으로 적어 주세요." required></textarea>
+          <textarea id="contactMessage" name="message" rows="7" placeholder="오류 내용, 수정 제안, 문의 사항을 구체적으로 적어 주세요." required></textarea>
         </div>
         <div class="field">
           <label for="contactImage">첨부 이미지 (선택, 최대 10MB)</label>
@@ -139,7 +154,7 @@
         <div class="actions single-action">
           <button id="contactSubmitBtn" type="submit">사이트에서 전송</button>
         </div>
-        <p class="helper" id="contactStatusText">불편사항, 개선 의견, 정책 문의를 전송할 수 있습니다. 서버 API가 실패하면 직접 전송 페이지로 자동 이동합니다.</p>
+        <p class="helper" id="contactStatusText">오류 제보, 해설 수정 요청, 정책 문의를 전송할 수 있습니다. 서버 API가 실패하면 직접 전송 페이지로 자동 이동합니다.</p>
       </form>
     </section>
   </div>
@@ -147,8 +162,3 @@
   <script src="contact.js" defer></script>
 </body>
 </html>
-
-
-
-
-

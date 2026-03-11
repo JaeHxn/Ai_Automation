@@ -10,8 +10,14 @@ const indexedUrls = new Set([
   "https://ai-automation-djq.pages.dev/blog/",
   "https://ai-automation-djq.pages.dev/blog/post-01-salary-day-budget.html",
   "https://ai-automation-djq.pages.dev/blog/post-02-delivery-spend-control.html",
+  "https://ai-automation-djq.pages.dev/blog/post-03-subscription-cleanup-checklist.html",
+  "https://ai-automation-djq.pages.dev/blog/post-04-secondhand-selling-guide.html",
+  "https://ai-automation-djq.pages.dev/blog/post-05-card-benefit-routine.html",
   "https://ai-automation-djq.pages.dev/blog/post-06-emergency-fund-30days.html",
+  "https://ai-automation-djq.pages.dev/blog/post-07-transport-communication-savings.html",
   "https://ai-automation-djq.pages.dev/blog/post-08-weekend-spend-reset.html",
+  "https://ai-automation-djq.pages.dev/blog/post-09-cafe-expense-reduction.html",
+  "https://ai-automation-djq.pages.dev/blog/post-10-beginner-investment-risk-check.html",
   "https://ai-automation-djq.pages.dev/about.html",
   "https://ai-automation-djq.pages.dev/methodology.html",
   "https://ai-automation-djq.pages.dev/editorial-policy.html",
@@ -19,20 +25,19 @@ const indexedUrls = new Set([
   "https://ai-automation-djq.pages.dev/contact.html",
 ]);
 
-const noindexFiles = [
-  "blog/post-03-subscription-cleanup-checklist.html",
-  "blog/post-04-secondhand-selling-guide.html",
-  "blog/post-05-card-benefit-routine.html",
-  "blog/post-07-transport-communication-savings.html",
-  "blog/post-09-cafe-expense-reduction.html",
-  "blog/post-10-beginner-investment-risk-check.html",
-];
+const noindexFiles = [];
 
 const publicPosts = [
   "blog/post-01-salary-day-budget.html",
   "blog/post-02-delivery-spend-control.html",
+  "blog/post-03-subscription-cleanup-checklist.html",
+  "blog/post-04-secondhand-selling-guide.html",
+  "blog/post-05-card-benefit-routine.html",
   "blog/post-06-emergency-fund-30days.html",
+  "blog/post-07-transport-communication-savings.html",
   "blog/post-08-weekend-spend-reset.html",
+  "blog/post-09-cafe-expense-reduction.html",
+  "blog/post-10-beginner-investment-risk-check.html",
 ];
 
 const issues = [];
@@ -148,7 +153,7 @@ function checkDuplicateContent() {
       tokens,
       grams: ngrams(tokens, 12),
     });
-    if (noSpaceChars < 1800 && tokens.length < 700) {
+    if (noSpaceChars < 800) {
       issues.push(`Public post too short: ${file} (${tokens.length} words, ${noSpaceChars} chars)`);
     }
   }

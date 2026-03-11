@@ -1,10 +1,10 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>나의 금전 운세 테스트 | 발견 확률·예상 금액</title>
-  <meta name="description" content="오늘 길에서 돈을 주울 확률과 예상 금액을 오락용으로 계산하는 서비스입니다. 한국 원화 기준 결과, 이용 안내, 개인정보 처리방침, 문의 정보를 제공합니다.">
+  <title>나의 금전 운세 테스트 | 길에서 돈을 주울 확률·예상 금액 해설</title>
+  <meta name="description" content="오늘 길에서 돈을 주울 확률과 예상 금액을 계산하고, 점수·타입·색상·7일 캘린더를 읽는 법까지 함께 확인하는 금전 운세 서비스입니다.">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="google-adsense-account" content="ca-pub-5354319294441406">
   <meta name="theme-color" content="#10835f">
@@ -14,12 +14,12 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="나의 금전 운세 테스트">
   <meta property="og:title" content="나의 금전 운세 테스트">
-  <meta property="og:description" content="오늘 길에서 돈을 주울 확률과 예상 금액을 오락용으로 계산합니다.">
+  <meta property="og:description" content="길에서 돈을 주울 확률과 예상 금액을 계산하고 결과를 해설하는 금전 운세 서비스">
   <meta property="og:url" content="https://ai-automation-djq.pages.dev/">
   <meta property="og:image" content="https://ai-automation-djq.pages.dev/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="나의 금전 운세 테스트">
-  <meta name="twitter:description" content="오늘 길에서 돈을 주울 확률과 예상 금액을 오락용으로 계산합니다.">
+  <meta name="twitter:description" content="오늘의 금전 운세 확률과 예상 금액, 해설 가이드, 7일 캘린더를 함께 확인해 보세요.">
   <meta name="twitter:image" content="https://ai-automation-djq.pages.dev/og-image.svg">
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
@@ -31,7 +31,8 @@
           "@id": "https://ai-automation-djq.pages.dev/#website",
           "url": "https://ai-automation-djq.pages.dev/",
           "name": "나의 금전 운세 테스트",
-          "inLanguage": "ko-KR"
+          "inLanguage": "ko-KR",
+          "description": "길에서 돈을 주울 확률과 예상 금액을 계산하고 결과를 해설하는 금전 운세 사이트"
         },
         {
           "@type": "WebApplication",
@@ -41,7 +42,38 @@
           "applicationCategory": "LifestyleApplication",
           "operatingSystem": "Web",
           "inLanguage": "ko-KR",
-          "description": "이름과 생년월일을 입력해 당일 금전 운세(확률·예상 금액)를 확인하는 오락용 계산기입니다."
+          "description": "이름과 생년월일을 입력해 오늘 길에서 돈을 주울 확률, 예상 금액, 타입, 색상, 7일 캘린더를 확인하는 금전 운세 계산기"
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://ai-automation-djq.pages.dev/#guides",
+          "name": "대표 금전 운세 해설 글",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "url": "https://ai-automation-djq.pages.dev/blog/post-01-salary-day-budget.html",
+              "name": "금전 운세 점수 1~100 해석법"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "url": "https://ai-automation-djq.pages.dev/blog/post-02-delivery-spend-control.html",
+              "name": "발견 확률 숫자 읽는 법"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "url": "https://ai-automation-djq.pages.dev/blog/post-04-secondhand-selling-guide.html",
+              "name": "돈운 타입 5종 완전 해설"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "url": "https://ai-automation-djq.pages.dev/blog/post-07-transport-communication-savings.html",
+              "name": "7일 돈운 캘린더 읽는 법"
+            }
+          ]
         },
         {
           "@type": "FAQPage",
@@ -49,26 +81,82 @@
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "실제 수입 예측 서비스인가요?",
+              "name": "실제 길거리 현금 발견을 예측하는 서비스인가요?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "아니요. 본 서비스는 오락용 시뮬레이션이며 실제 수입, 투자, 소비 의사결정 근거로 사용할 수 없습니다."
+                "text": "아니요. 본 서비스는 이름, 생년월일, 날짜를 조합한 오락용 금전 운세 계산기이며 실제 발견 가능성을 보장하지 않습니다."
               }
             },
             {
               "@type": "Question",
-              "name": "같은 입력값이면 결과가 항상 같은가요?",
+              "name": "같은 입력값이면 결과가 왜 같게 나오나요?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "이름과 생년월일을 대상으로 값이 결정됩니다."
+                "text": "이 사이트는 동일 입력과 동일 날짜에서 같은 결과가 나오도록 규칙 기반 계산을 사용합니다."
               }
             },
             {
               "@type": "Question",
-              "name": "결과 금액 단위는 무엇인가요?",
+              "name": "확률이 낮은데 금액이 큰 날은 무슨 의미인가요?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "표시 금액은 대한민국 원화(KRW) 기준입니다."
+                "text": "작은 기회 수보다 한 번의 강한 찬스에 의미를 둔 해석으로 볼 수 있으며, 현실 보장을 뜻하지는 않습니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "돈운 타입은 어떻게 읽어야 하나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "절약형, 역전형, 한방형, 안정형, 리스크주의형은 금액과 확률의 조합을 읽기 쉽게 정리한 해석 라벨입니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "행운 색상과 주의 색상은 무엇을 의미하나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "색상은 오늘의 운세 분위기를 읽는 보조 해석 요소이며 실제 과학적 인과관계를 뜻하지 않습니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "귀인과 주의 인물 초성은 실제 인물을 뜻하나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "아니요. 초성은 결과 해석을 돕는 상징적 요소이며 특정 개인을 지목하는 기능이 아닙니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "7일 캘린더는 어떻게 활용하면 되나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "오늘을 기준으로 전후 7일 흐름을 비교해 상대적으로 강한 날과 조용한 날을 읽는 용도로 활용할 수 있습니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "입력값은 저장되나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "계산 입력값은 브라우저에서만 처리되며 별도 데이터베이스에 저장하지 않습니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "프리미엄 리포트가 이미 있나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "아직 아닙니다. 현재는 무료 금전 운세와 해설 콘텐츠를 중심으로 운영하며 상세 리포트는 추후 도입 예정입니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "오류나 수정 요청은 어디로 보내나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "문의 페이지의 접수 폼 또는 공개 이메일을 통해 오류 제보와 수정 요청을 보낼 수 있습니다."
               }
             }
           ]
@@ -84,26 +172,30 @@
         <a class="brand" href="#top">금전 운세</a>
         <div class="nav-links">
           <a href="#calculator">계산기</a>
-          <a href="blog/">블로그</a>
+          <a href="#read">결과 읽는 법</a>
+          <a href="blog/">해설 라이브러리</a>
           <a href="#calendar">7일 캘린더</a>
           <a href="#faq">FAQ</a>
-          <a href="#quality">운영 원칙</a>
           <a href="methodology.html">계산 방법</a>
-          <a href="editorial-policy.html">편집 원칙</a>
           <a href="about.html">서비스 소개</a>
-          <a href="privacy.html">개인정보</a>
           <a href="contact.html">문의</a>
         </div>
       </nav>
-      <div class="badge">FORTUNE MONEY CALCULATOR</div>
+      <div class="badge">MONEY FORTUNE SERVICE</div>
       <h1>나의 금전 운세 테스트</h1>
-      <p class="subtitle">오늘 길에서 돈을 주울 확률과 예상 발견 금액을 재미용 시뮬레이션으로 계산합니다.</p>
+      <p class="subtitle">오늘 길에서 돈을 주울 확률과 예상 금액을 해석하는 금전 운세 서비스입니다.</p>
       <div class="today">오늘 날짜 <span id="todayText"></span></div>
-      <p class="hero-note">운영 안내: 블로그는 운세 결과를 일상 소비 행동으로 연결하는 보조 가이드 4편만 공개하며, 본 계산 결과 해석은 오락 목적에 한정됩니다.</p>
+      <p class="hero-note">현재는 무료 금전 운세 계산과 해설 콘텐츠를 중심으로 운영합니다. 프리미엄 상세 금전 운세 리포트는 추후 도입 예정이며, 심사 기간 동안 실제 결제 기능은 노출하지 않습니다.</p>
+      <div class="chip-row">
+        <span class="topic-chip">무료 금전 운세 계산</span>
+        <span class="topic-chip">결과 해설 라이브러리</span>
+        <span class="topic-chip">광고 스크립트 비활성화 운영</span>
+      </div>
     </header>
 
     <section class="panel form" id="calculator">
-      <h2>정보 입력</h2>
+      <h2>오늘의 금전 운세 계산</h2>
+      <p class="helper">이름과 생년월일을 입력하면 오늘 기준 KST로 길에서 돈을 주울 확률, 예상 금액, 돈운 타입, 색상, 7일 캘린더가 함께 계산됩니다.</p>
       <div class="field">
         <label for="nameInput">이름</label>
         <input id="nameInput" type="text" placeholder="예: 김하늘" autocomplete="name">
@@ -158,6 +250,15 @@
           <div class="result-value type-line"><span class="type-chip" id="typeNameText">—</span><span id="typeCommentText">—</span></div>
         </div>
         <div class="result-item wide">
+          <div class="result-title">이 결과를 이렇게 읽으세요</div>
+          <ul class="plain-list compact-list">
+            <li>발견 확률은 오늘의 기회 빈도를 읽는 지표입니다.</li>
+            <li>예상 금액은 한 번 기회가 왔을 때의 강도를 읽는 지표입니다.</li>
+            <li>돈운 타입은 확률과 금액 조합을 한 줄로 요약한 라벨입니다.</li>
+            <li>귀인, 색상, 미션 카드는 오늘의 해석 흐름을 보조하는 상징 요소입니다.</li>
+          </ul>
+        </div>
+        <div class="result-item wide">
           <div class="result-title">결과 공유 카드</div>
           <div class="share-wrap">
             <button id="downloadCardBtn" type="button">이미지 다운로드</button>
@@ -177,6 +278,142 @@
           <div class="result-title">주의</div>
           <div class="result-value" id="noteText">—</div>
         </div>
+        <div class="result-item wide">
+          <div class="result-title">다음에 읽을 해설</div>
+          <div class="related-links">
+            <a href="blog/post-02-delivery-spend-control.html"><strong>발견 확률 숫자 읽는 법</strong><span>확률 수치를 어떻게 받아들여야 하는지 단계별로 설명합니다.</span></a>
+            <a href="blog/post-04-secondhand-selling-guide.html"><strong>돈운 타입 5종 완전 해설</strong><span>절약형부터 한방형까지 타입별 해석 차이를 정리합니다.</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="read">
+      <h2>결과 읽는 법</h2>
+      <div class="overview-grid">
+        <article class="overview-item">
+          <h3>1. 확률 먼저 보기</h3>
+          <p>확률은 오늘의 돈운이 얼마나 자주 반응하는지를 보여주는 첫 지표입니다. 수치가 높을수록 작은 기회가 자주 온다고 읽고, 낮을수록 드문 찬스를 의식하는 편이 자연스럽습니다.</p>
+        </article>
+        <article class="overview-item">
+          <h3>2. 금액으로 강도 보기</h3>
+          <p>예상 금액은 기회가 왔을 때의 체감 강도를 읽는 값입니다. 금액이 큰 날은 한 번의 반응이 강하고, 금액이 낮은 날은 잔잔하지만 꾸준한 흐름으로 해석할 수 있습니다.</p>
+        </article>
+        <article class="overview-item">
+          <h3>3. 타입과 색상 연결하기</h3>
+          <p>타입은 전체 분위기를 요약하고, 색상과 귀인은 오늘의 감정선과 상징 포인트를 덧붙이는 역할을 합니다. 핵심은 숫자, 보조는 상징이라는 순서를 유지하는 것입니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>확률 구간 해설</h2>
+      <div class="signal-grid">
+        <article class="signal-card">
+          <strong>0%~4.99%</strong>
+          <p>기회가 드문 조용한 날입니다. 숫자 자체보다 오늘의 미션과 주의 문구를 읽는 편이 더 의미 있습니다.</p>
+        </article>
+        <article class="signal-card">
+          <strong>5%~8.99%</strong>
+          <p>평균 이하의 흐름입니다. 큰 움직임보다 조심스럽게 분위기를 읽는 날로 받아들이면 좋습니다.</p>
+        </article>
+        <article class="signal-card">
+          <strong>9%~12.99%</strong>
+          <p>가장 해석하기 쉬운 균형 구간입니다. 금액과 타입을 함께 보면 오늘의 전체 인상이 선명해집니다.</p>
+        </article>
+        <article class="signal-card">
+          <strong>13%~15.99%</strong>
+          <p>반응성이 살아 있는 날입니다. 금액이 낮아도 잦은 기회 감각을 강조하는 해석에 가깝습니다.</p>
+        </article>
+        <article class="signal-card">
+          <strong>16%~18.75%</strong>
+          <p>상한에 가까운 적극 구간입니다. 이런 날은 미션 카드와 색상 해석을 함께 읽으면 재미 요소가 더 살아납니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>예상 금액 구간 해설</h2>
+      <div class="signal-grid">
+        <article class="signal-card">
+          <strong>100원~9,900원</strong>
+          <p>작고 가벼운 돈운입니다. 오늘의 흐름을 보는 입문 구간으로 생각하면 무리가 없습니다.</p>
+        </article>
+        <article class="signal-card">
+          <strong>10,000원~19,900원</strong>
+          <p>체감 가능한 중간 구간입니다. 확률과 결합해 읽으면 가장 무난한 균형형 해석이 나옵니다.</p>
+        </article>
+        <article class="signal-card">
+          <strong>20,000원~29,900원</strong>
+          <p>기회의 크기가 확실히 느껴지는 편입니다. 확률이 낮다면 한방형 성격이 강해집니다.</p>
+        </article>
+        <article class="signal-card">
+          <strong>30,000원 이상</strong>
+          <p>희소하지만 인상이 큰 날로 읽기 좋습니다. 수치 자체보다 전체 타입과 주의 문구를 함께 보는 편이 균형 잡힙니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>돈운 타입 5종 해설</h2>
+      <div class="overview-grid">
+        <article class="overview-item">
+          <h3>절약형</h3>
+          <p>큰 폭보다 작은 흐름이 자주 보이는 타입입니다. 잔잔한 반응을 즐기는 날로 해석하면 맞습니다.</p>
+        </article>
+        <article class="overview-item">
+          <h3>역전형</h3>
+          <p>초반보다 후반 흐름이 강해지는 인상을 줍니다. 오늘의 미션 카드와 함께 읽을 때 가장 재미가 살아납니다.</p>
+        </article>
+        <article class="overview-item">
+          <h3>한방형</h3>
+          <p>기회 수는 적지만 한 번의 인상이 강한 타입입니다. 낮은 확률과 높은 금액이 같이 나올 때 자주 등장합니다.</p>
+        </article>
+        <article class="overview-item">
+          <h3>안정형</h3>
+          <p>확률과 금액의 균형이 좋은 표준 타입입니다. 처음 사용하는 이용자에게 가장 이해하기 쉬운 결과입니다.</p>
+        </article>
+        <article class="overview-item">
+          <h3>리스크주의형</h3>
+          <p>과장 해석을 피하라는 신호에 가깝습니다. 숫자를 가볍게 보고 오늘의 주의 문구를 중심으로 읽는 편이 좋습니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>귀인·주의 인물 초성 해석</h2>
+      <div class="story-grid">
+        <div class="info-box">
+          <strong>귀인 초성</strong>
+          <p>귀인 초성은 오늘의 금전 운세를 밝게 읽게 만드는 상징 요소입니다. 특정 실존 인물을 지목하는 기능이 아니라, 결과에 하나의 캐릭터성을 더하는 장치로 이해하면 됩니다.</p>
+        </div>
+        <div class="info-box">
+          <strong>주의 인물 초성</strong>
+          <p>주의 인물 초성은 경계감을 상징하는 반대 축입니다. 운세 흐름에서 긴장을 주는 기호로 읽는 것이 맞고, 실제 인간관계를 판단하는 근거가 되지 않습니다.</p>
+        </div>
+      </div>
+      <ul class="plain-list">
+        <li>초성은 상징 요소이므로 특정인 맞추기 용도로 사용하지 않습니다.</li>
+        <li>숫자 해석이 본체이고, 초성은 분위기를 보조하는 장치입니다.</li>
+        <li>귀인과 주의 인물이 동시에 강하면 양면성이 큰 날로 읽을 수 있습니다.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>행운 색상과 주의 색상 해석</h2>
+      <div class="overview-grid">
+        <article class="overview-item">
+          <h3>행운 색상</h3>
+          <p>오늘 결과의 긍정 톤을 시각적으로 보여줍니다. 금전 운세를 기억하기 쉬운 한 줄 키워드처럼 받아들이면 적당합니다.</p>
+        </article>
+        <article class="overview-item">
+          <h3>주의 색상</h3>
+          <p>과열되거나 새는 흐름을 표현하는 대비 색상입니다. 좋고 나쁨을 단정하기보다 오늘의 균형점을 읽는 보조 장치입니다.</p>
+        </article>
+        <article class="overview-item">
+          <h3>색상 읽기 팁</h3>
+          <p>색상은 과학적 예측이 아니라 해석의 분위기를 정리해 주는 언어입니다. 타입, 확률, 금액과 함께 볼 때 가장 자연스럽습니다.</p>
+        </article>
       </div>
     </section>
 
@@ -186,31 +423,124 @@
       <div class="calendar-grid" id="calendarGrid"></div>
     </section>
 
+    <section class="panel">
+      <h2>7일 캘린더 활용법</h2>
+      <ol class="plain-list ordered-list">
+        <li>오늘 값만 보지 말고 전후 7일에서 상대적으로 강한 날을 먼저 확인합니다.</li>
+        <li>가장 높은 예상 금액과 가장 높은 확률이 같은 날인지 비교하면 흐름 차이가 보입니다.</li>
+        <li>추천일은 절대 예측이 아니라 상대 비교 결과이므로, 오늘의 해설을 보완하는 용도로만 읽습니다.</li>
+        <li>같은 입력값으로 며칠 뒤 다시 계산해도 날짜가 바뀌면 캘린더 흐름은 달라집니다.</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <h2>대표 해설 글</h2>
+      <div class="blog-post-grid">
+        <article class="blog-post-card">
+          <div class="blog-card-head">
+            <span class="topic-chip">점수 해설</span>
+            <span class="card-meta">읽기 8분</span>
+          </div>
+          <h3><a href="blog/post-01-salary-day-budget.html">금전 운세 점수 1~100 해석법</a></h3>
+          <p>점수 하나만 봐도 오늘의 분위기를 어떻게 읽어야 하는지 정리한 기준서입니다.</p>
+        </article>
+        <article class="blog-post-card">
+          <div class="blog-card-head">
+            <span class="topic-chip">확률 해설</span>
+            <span class="card-meta">읽기 8분</span>
+          </div>
+          <h3><a href="blog/post-02-delivery-spend-control.html">발견 확률 숫자 읽는 법</a></h3>
+          <p>확률 수치가 낮거나 높을 때 어떤 오해가 생기는지 예시와 함께 풀어냅니다.</p>
+        </article>
+        <article class="blog-post-card">
+          <div class="blog-card-head">
+            <span class="topic-chip">타입 해설</span>
+            <span class="card-meta">읽기 9분</span>
+          </div>
+          <h3><a href="blog/post-04-secondhand-selling-guide.html">돈운 타입 5종 완전 해설</a></h3>
+          <p>절약형, 역전형, 한방형, 안정형, 리스크주의형을 결과 조합으로 설명합니다.</p>
+        </article>
+        <article class="blog-post-card">
+          <div class="blog-card-head">
+            <span class="topic-chip">색상 해설</span>
+            <span class="card-meta">읽기 7분</span>
+          </div>
+          <h3><a href="blog/post-06-emergency-fund-30days.html">행운 색상과 피해야 할 색상 해설</a></h3>
+          <p>색상 카드가 왜 붙는지, 어떤 순서로 읽으면 과장 없이 즐길 수 있는지 정리합니다.</p>
+        </article>
+        <article class="blog-post-card">
+          <div class="blog-card-head">
+            <span class="topic-chip">캘린더 해설</span>
+            <span class="card-meta">읽기 8분</span>
+          </div>
+          <h3><a href="blog/post-07-transport-communication-savings.html">7일 돈운 캘린더 읽는 법</a></h3>
+          <p>추천일을 어떻게 받아들여야 하는지와 전후 7일 비교법을 설명합니다.</p>
+        </article>
+        <article class="blog-post-card">
+          <div class="blog-card-head">
+            <span class="topic-chip">기록법</span>
+            <span class="card-meta">읽기 8분</span>
+          </div>
+          <h3><a href="blog/post-09-cafe-expense-reduction.html">금전 운세 결과 기록법</a></h3>
+          <p>결과를 적어 두면 어떤 패턴으로 즐길 수 있는지 14일 기록 예시와 함께 소개합니다.</p>
+        </article>
+      </div>
+      <p class="helper">전체 해설 문서는 <a href="blog/">금전 운세 해설 라이브러리</a>에서 볼 수 있습니다.</p>
+    </section>
+
     <section class="panel basis">
       <h2>계산 원리 및 이용 고지</h2>
       <ul class="plain-list">
-        <li>본 서비스는 이름·생년월일·당일 날짜를 조합한 오락용 시뮬레이션 결과를 제공합니다. 실제 거리 환경, 이동 동선, 현장 변수는 반영되지 않습니다.</li>
-        <li>표시되는 확률과 금액은 통계 예측 모델이 아니라 결정적 계산 규칙으로 생성된 가상 지표이며, 사건 발생 가능성을 보장하지 않습니다.</li>
-        <li>동일 입력은 동일 날짜(KST)에서 동일 결과를 반환하도록 설계되어 재현성을 확보하지만, 이는 품질 검증용 계산 일관성이지 실측 정확도를 의미하지 않습니다.</li>
-        <li>결과값은 재미 목적 해석 정보입니다. 실제 수입 추정, 투자 판단, 소비 계획, 신용·대출 관련 의사결정 근거로 사용하면 안 됩니다.</li>
+        <li>본 서비스는 이름, 생년월일, 당일 날짜를 조합한 규칙 기반 금전 운세 결과를 제공합니다.</li>
+        <li>표시되는 확률과 금액은 실제 길거리 현금 발견을 예측하는 실측 모델이 아니라 오락용 해석 지표입니다.</li>
+        <li>동일 입력은 동일 날짜(KST)에서 동일 결과를 반환하도록 설계되어 재현성이 있습니다.</li>
+        <li>결과값은 재미 목적 해석 정보이며 투자, 소비, 대출, 수입 계획의 근거로 사용하면 안 됩니다.</li>
       </ul>
-      <p class="footer-note">이 계산기는 오락용 운세 서비스입니다. 실제 수입/투자 판단 근거로 사용하지 마세요.</p>
+      <p class="footer-note">이 계산기는 오락용 금전 운세 서비스입니다. 실제 재무 판단이나 법적 판단의 근거로 사용하지 마세요.</p>
     </section>
 
     <section class="panel faq" id="faq">
       <h2>자주 묻는 질문</h2>
       <div class="faq-list">
         <details class="faq-item">
-          <summary>실제 수입 예측 서비스인가요?</summary>
-          <p>아니요. 본 서비스는 오락용 시뮬레이션이며 실제 수입, 투자, 소비 의사결정 근거로 사용할 수 없습니다.</p>
+          <summary>실제 길거리 현금 발견을 예측하는 서비스인가요?</summary>
+          <p>아니요. 이름, 생년월일, 날짜를 조합한 오락용 금전 운세 결과이며 실제 발견 가능성을 보장하지 않습니다.</p>
         </details>
         <details class="faq-item">
-          <summary>같은 입력값이면 결과가 항상 같은가요?</summary>
-          <p>이름과 생년월일을 대상으로 값이 결정됩니다.</p>
+          <summary>같은 입력값이면 결과가 왜 같게 나오나요?</summary>
+          <p>같은 조건에서 같은 결과가 나오도록 설계된 규칙 기반 계산을 사용하기 때문입니다. 날짜가 바뀌면 결과도 새로 계산됩니다.</p>
         </details>
         <details class="faq-item">
-          <summary>결과 금액 단위는 무엇인가요?</summary>
-          <p>표시 금액은 대한민국 원화(KRW) 기준이며, 반올림 규칙으로 표시됩니다.</p>
+          <summary>확률이 낮은데 예상 금액이 크게 나올 수 있나요?</summary>
+          <p>가능합니다. 이 경우는 기회의 횟수보다 한 번의 강도가 크게 잡힌 날로 읽을 수 있으며, 보장 의미는 아닙니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>돈운 타입은 어떤 순서로 봐야 하나요?</summary>
+          <p>확률과 금액을 먼저 보고, 그 조합을 요약한 라벨이 타입이라고 생각하면 이해가 쉽습니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>귀인과 주의 인물 초성은 특정인을 뜻하나요?</summary>
+          <p>아니요. 초성은 결과에 상징적 캐릭터를 부여하는 장치일 뿐이며 실제 인물 판단용이 아닙니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>행운 색상은 실제 효력이 있나요?</summary>
+          <p>색상은 결과를 기억하기 쉬운 시각적 해설 요소입니다. 과학적 효과를 주장하는 기능은 아닙니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>7일 캘린더는 어떻게 보면 좋나요?</summary>
+          <p>오늘만 보지 말고 전후 7일에서 상대적으로 강한 날과 조용한 날을 비교하는 용도로 쓰면 좋습니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>입력한 이름과 생년월일은 저장되나요?</summary>
+          <p>계산 입력값은 브라우저에서만 처리되며 별도 데이터베이스에 저장하지 않습니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>프리미엄 상세 리포트는 이미 제공되나요?</summary>
+          <p>아직 아닙니다. 현재는 무료 금전 운세와 해설 콘텐츠를 중심으로 운영하고 있으며 상세 리포트는 추후 도입 예정입니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>오류 제보나 수정 요청은 어디서 하나요?</summary>
+          <p><a href="contact.html">문의 페이지</a>에서 접수하거나 공개 이메일로 보낼 수 있습니다. 확인 가능한 범위에서 순차적으로 검토합니다.</p>
         </details>
       </div>
     </section>
@@ -220,23 +550,27 @@
       <div class="policy-grid">
         <a class="policy-card" href="methodology.html">
           <strong>계산 방법</strong>
-          <span>입력값, 계산 흐름, 해석 한계 공개</span>
+          <span>입력값, 계산 흐름, 동일 입력 재현성, 해석 한계를 공개합니다.</span>
+        </a>
+        <a class="policy-card" href="blog/">
+          <strong>해설 라이브러리</strong>
+          <span>확률, 금액, 타입, 색상, 귀인, 캘린더를 읽는 10개 문서를 모아 둡니다.</span>
         </a>
         <a class="policy-card" href="editorial-policy.html">
           <strong>편집 원칙</strong>
-          <span>작성 기준, 검토 절차, 정정 정책</span>
+          <span>금전 운세 해설 글의 작성 기준과 정정 절차를 설명합니다.</span>
         </a>
         <a class="policy-card" href="about.html">
           <strong>서비스 소개</strong>
-          <span>운영 목적, 콘텐츠 방향, 업데이트 기준</span>
+          <span>이 사이트를 왜 운영하는지와 콘텐츠 방향, 향후 계획을 안내합니다.</span>
         </a>
         <a class="policy-card" href="privacy.html">
           <strong>개인정보 처리방침</strong>
-          <span>수집 항목, 처리 목적, 보관 방식</span>
+          <span>입력값, 문의 데이터, 광고 재개 시 쿠키 정책을 현재 동작 기준으로 설명합니다.</span>
         </a>
         <a class="policy-card" href="contact.html">
           <strong>문의 및 제보</strong>
-          <span>오류 신고, 정책 문의, 콘텐츠 개선 요청</span>
+          <span>오류 제보, 해설 수정 요청, 정책 문의를 접수할 수 있습니다.</span>
         </a>
       </div>
     </section>
@@ -245,20 +579,20 @@
       <h2>운영 품질 원칙</h2>
       <div class="overview-grid">
         <article class="overview-item">
-          <h3>독립 콘텐츠 우선</h3>
-          <p>계산기 자체 기능, 해석 가이드, 이용 안내를 한 화면에 제공합니다. 광고 유입만을 위한 저품질 랜딩 구조를 지양합니다.</p>
+          <h3>금전 운세 중심</h3>
+          <p>모든 본문은 길에서 돈을 주울 확률과 예상 금액을 해석하는 금전 운세라는 핵심 주제에 맞춰 작성합니다.</p>
         </article>
         <article class="overview-item">
-          <h3>명확한 정보 구조</h3>
-          <p>계산 입력, 결과, 정책 안내, 문의 페이지를 분리해 사용자가 필요한 정보를 쉽게 찾을 수 있도록 구성합니다.</p>
+          <h3>결과 해설 강화</h3>
+          <p>계산기만 두지 않고 점수, 확률, 금액, 타입, 색상, 캘린더를 읽는 별도 해설 문서를 함께 제공합니다.</p>
         </article>
         <article class="overview-item">
-          <h3>보조 가이드 최소 공개</h3>
-          <p>블로그는 운세 보조 목적의 핵심 4편만 공개하고, 중복 가능성이 있는 글은 재작성 전까지 색인 대상에서 제외합니다.</p>
+          <h3>투명한 운영</h3>
+          <p>계산 원리, 편집 원칙, 문의 채널, 개인정보 정책을 공개해 사이트 범위와 책임을 분명히 합니다.</p>
         </article>
         <article class="overview-item">
-          <h3>정책 공개</h3>
-          <p>개인정보 처리, 편집 원칙, 계산 방법, 문의 채널을 공개해 운영 주체와 서비스 범위를 투명하게 안내합니다.</p>
+          <h3>광고보다 완성도 우선</h3>
+          <p>심사 기간에는 광고 스크립트를 비활성화하고, 무료 콘텐츠 자체 완성도를 먼저 높여 운영합니다.</p>
         </article>
       </div>
     </section>
@@ -266,9 +600,9 @@
     <footer class="site-footer">
       <p>© 나의 금전 운세 테스트</p>
       <div class="footer-links">
-        <a href="about.html">소개</a>
+        <a href="blog/">해설 라이브러리</a>
         <a href="methodology.html">계산 방법</a>
-        <a href="editorial-policy.html">편집 원칙</a>
+        <a href="about.html">소개</a>
         <a href="privacy.html">개인정보</a>
         <a href="contact.html">문의</a>
       </div>
@@ -278,8 +612,3 @@
   <script src="app.js" defer></script>
 </body>
 </html>
-
-
-
-
-
